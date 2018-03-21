@@ -98,7 +98,8 @@ public class PasswordGeneratorFrame extends JFrame implements ActionListener{
             }
         }
 
-        this.generatedPassword.setText(generateString());
+        int passwordSize = (int)this.passwordLength.getSelectedItem();
+        this.generatedPassword.setText(generateString(passwordSize));
     }
 
     /**
@@ -106,11 +107,11 @@ public class PasswordGeneratorFrame extends JFrame implements ActionListener{
      *  then appends them to the end of the password string.
      * @return password when the correct amount of values have been appended
      */
-    public String generateString(){
+    public String generateString(int password_size){
         String password = new String("");
         Random rn = new Random();
 
-        for(int i = 0; i < (int)this.passwordLength.getSelectedItem(); i++){
+        for(int i = 0; i < password_size; i++){
             int randomValue = rn.nextInt(this.availableCharacters.size());
             password += this.availableCharacters.get(randomValue);
         }
